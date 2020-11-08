@@ -1,21 +1,56 @@
-const http = require('http');
+const express = require('express');
+
+const app = express();
+const port = 8000;
+
+let blogs = [{
+	id: 1,
+	title: 'hello'
+},
+{
+	id: 2,
+	title: 'world'
+}];
 
 
-let server = http.createServer((request, response)=>{
-    if(request.url === '/') {
-		response.writeHead(200, {'content-type' : 'text/html'});
-		response.write('<html><body><h1>Hello world</h1><p>This is root page</p></body></html>');
-		response.end();
-	} else if(request.url === '/profile') {
-		response.writeHead(200, {'content-type' : 'text/html'});
-		response.write('<html><body><h1>Hello IIMS, how are you????</h1><p>This is profile page</p></body></html>');
-		response.end();
-	} else {
-		response.writeHead(404, {'content-type': 'text/html'});
-		response.write('<html><body><h1>404 Page Not Found</h1></body></html>')
-		response.end();
-	}
+app.get('/blog',(req, resp) => {
+	resp.json(blogs);
 });
 
-server.listen(8000);
-console.log('Server is running on port:',8000);
+app.post('/blog',(req, res) => {
+	res.json({method: req.method});
+});
+
+app.put('/blog/:id',(req, res) => {
+	res.json({method: req.method});
+});
+
+app.get('/blog/:id', (req, res) => {
+	let data = blogs.filter((value) => value.id === parseInt(req.params.id));
+	if(!data[0]){
+		return res.status(404).json({error: 'Data not found'});
+	}
+	res.json(data[0]);
+})
+
+app.delete('/blog/:id', (req, res) => {
+	res.json({method: req.method});
+})
+
+app.listen(port, () => {
+	console.log(`Application is running on port: ${port}`);
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
