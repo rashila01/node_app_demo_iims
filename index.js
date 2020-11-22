@@ -3,13 +3,6 @@ const url = require('url');
 
 
 let server = http.createServer((request, response) => {
-	// let queryObject = url.parse(request.url, true).query;
-	// console.log(queryObject);
-
-	// response.writeHead(200, {'content-type' : 'text/html'});
-	// 	response.write(`<html><body><h1>Hello ${queryObject.name}, how are you????</h1>
-	// 		<p>This is profile page. His age is ${queryObject.age}.</p></body></html>`);
-	// 	response.end();
 	if(request.url == '/blog') {
 		response.writeHead(200, {'content-type' : 'text/html'});
 		response.write('<html><body><h1>Hello world</h1><p>This is root page</p></body></html>');

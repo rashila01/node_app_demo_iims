@@ -1,7 +1,7 @@
 {
   "name": "node_app",
   "version": "1.0.0",
-  "description": "node",
+  "description": "node demo project",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
@@ -9,13 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rashila01/node_app_demo_iims.git"
+    "url": "git+https://github.com/gobeam/node_app_demo_iims.git"
   },
-  "author": "Rashila Maharjan",
+  "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rashila01/node_app_demo_iims/issues"
+    "url": "https://github.com/gobeam/node_app_demo_iims/issues"
   },
-  "homepage": "https://github.com/rashila01/node_app_demo_iims#readme",
-
+  "homepage": "https://github.com/gobeam/node_app_demo_iims#readme"
 }
