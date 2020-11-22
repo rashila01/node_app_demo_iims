@@ -3,6 +3,7 @@ const url = require('url');
 
 
 let server = http.createServer((request, response) => {
+	
 	if(request.url == '/blog') {
 		response.writeHead(200, {'content-type' : 'text/html'});
 		response.write('<html><body><h1>Hello world</h1><p>This is root page</p></body></html>');
