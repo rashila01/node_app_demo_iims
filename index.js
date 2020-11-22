@@ -1,84 +1,32 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-const User=mongoose.model('User');
+const http = require('http');
+const url = require('url');
 
 
-const app = express();
-const port = 8000;
+let server = http.createServer((request, response) => {
+	// let queryObject = url.parse(request.url, true).query;
+	// console.log(queryObject);
 
-let blogs = []; //{id:1, title:''}
-
-app.use(bodyParser.json());
-
-//query all stored blogs
-app.get('/blogs',(req, resp) => {
-	resp.json(blogs);
+	// response.writeHead(200, {'content-type' : 'text/html'});
+	// 	response.write(`<html><body><h1>Hello ${queryObject.name}, how are you????</h1>
+	// 		<p>This is profile page. His age is ${queryObject.age}.</p></body></html>`);
+	// 	response.end();
+	if(request.url == '/blog') {
+		response.writeHead(200, {'content-type' : 'text/html'});
+		response.write('<html><body><h1>Hello world</h1><p>This is root page</p></body></html>');
+		response.end();
+	} else if(request.url == '/profile') {
+		response.writeHead(200, {'content-type' : 'text/html'});
+		response.write('<html><body><h1>Hello IIMS, how are you????</h1><p>This is profile page</p></body></html>');
+		response.end();
+	} else {
+		response.writeHead(404, {'content-type': 'text/html'});
+		response.write('<html><body><h1>404 Page Not Found</h1></body></html>')
+		response.end();
+	}
 });
 
-//store a user
-app.post('/blog',(req, res) => {
-	// let{title}=req.body;
-
-	let title=req.body.title;
-	let data = {
-		id: blogs.length + 1,
-		title : title
-	}
-	blogs.push(data)
-	res.json(data);
-});
-
-//Update a blog by id
-app.put('/blog/:id',(req, res) => {
-	let blog = blogs.filter((value) => {
-	return value.id === parseInt(req.params.id)
-	});
-	if(!data[0]){
-		return res.status(404).json({error: 'Data not found'});
-	}
-	let title = req.body.title;
-	blogs.forEach((value, index)=>{
-		if(value.id === parseInt(req.params.id)){
-			blogs[index].title = title;
-		}
-	})
-	res.json({id: req.params.id, title:title});
-});
-
-//query a blog through given data
-app.get('/blog/:id', (req, res) => {
-	let data = blogs.filter((value) => value.id === parseInt(req.params.id));
-	if(!data[0]){
-		return res.status(404).json({error: 'Data not found'});
-	}
-	res.json(data[0]);
-})
-
-//delete a blog by given id
-app.delete('/blog/:id', (req, res) => {
-	let blog = blogs.filter((value) => {
-		return value.id === parseInt(req.params.id)
-		});
-		if(!data[0]){
-			return res.status(404).json({error: 'Data not found'});
-		}
-		let deleteIndex;
-		blogs.forEach((value, index)=>{
-			if(value.id === parseInt(req.params.id)){
-				deleteIndex=index;
-			}
-		})
-		blogs.splice(deleteIndex, 1);
-
-	res.status(204).json({});
-})
-app.listen(port, () => {
-	console.log(`Application is running on port: ${port}`);
-})
-
-module.exports = app
-
+server.listen(8000);
+console.log('Server is running on port: ', 8000);
 
 
 
