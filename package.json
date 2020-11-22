@@ -9,12 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gobeam/node_app_demo_iims.git"
+    "url": "git+https://github.com/rashila01/node_app_demo_iims.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/gobeam/node_app_demo_iims/issues"
+    "url": "https://github.com/rashila01/node_app_demo_iims/issues"
   },
-  "homepage": "https://github.com/gobeam/node_app_demo_iims#readme"
+  "homepage": "https://github.com/rashila01/node_app_demo_iims#readme"
 }
