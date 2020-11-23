@@ -16,6 +16,12 @@ app.use((req, resp, next)=>{
 })
 app.use('/api', routes);
 
+app.listen(port, () => {
+	console.log(`Application is running on port: ${port}`);
+})
+
+module.exports = app
+
 //query all stored blogs
 // app.get('/blogs',(req, resp) => {
 // 	resp.json(blogs);
@@ -83,11 +89,11 @@ app.use('/api', routes);
 // 	res.status(204).json({});
 // })
 
-app.listen(port, () => {
-	console.log(`Application is running on port: ${port}`);
-})
+// app.listen(port, () => {
+// 	console.log(`Application is running on port: ${port}`);
+// })
 
-module.exports = app
+// module.exports = app
 
 
 
